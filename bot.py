@@ -28,7 +28,7 @@ service_map = {
     "ldap": {"port": "389", "proto": "tcp", "name": "LDAP"},
     "ssh": {"port": "22", "proto": "tcp", "name": "SSH"},
     "smb": {"port": "445", "proto": "tcp", "name": "SMB"},
-    "microsoft":{"name": "Microsoft"},
+    "windows":{"name": "Windows"},
 
 
 }
