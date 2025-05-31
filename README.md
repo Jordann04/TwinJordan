@@ -59,7 +59,7 @@ DISCORD_TOKEN=your_discord_bot_token_here
 
 Here’s how the bot responds when you query one of the most wide Known CVEs ETERNAL BLUE:
 
-![Discord bot in action](bot_demo.png)
+![Discord bot in action](Bot_run.png)
 
 CLI (Coming Soon)
 - A CLI tool will be available soon for direct use in the terminal:
