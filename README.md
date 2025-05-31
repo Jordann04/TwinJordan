@@ -57,7 +57,7 @@ DISCORD_TOKEN=your_discord_bot_token_here
 - The bot will respond with the CVE details and a generated Snort rule.
 - ## Demo
 
-Here’s how the bot responds when you query one of the most wide Known CVEs ETERNAL BLUE:
+Here’s how the bot responds when you query one of the most widely Known CVEs ETERNAL BLUE:
 
 ![Discord bot in action](Bot_run.png)
 
