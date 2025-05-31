@@ -55,6 +55,11 @@ DISCORD_TOKEN=your_discord_bot_token_here
 - Use the command in any channel the bot has access to:
 - !snort CVE-2017-0144
 - The bot will respond with the CVE details and a generated Snort rule.
+- ## Demo
+
+Here’s how the bot responds when you query one of the most wide Known CVEs ETERNAL BLUE:
+
+![Discord bot in action](bot_demo.png)
 
 CLI (Coming Soon)
 - A CLI tool will be available soon for direct use in the terminal:
@@ -72,8 +77,9 @@ CLI (Coming Soon)
 
 - Enhanced testing and CI/CD integration
 
-- Expanded service and attack vector database
-- 
+- Expanding services and attack vector database
+ 
+- adding ports and custom user input
 ## Contributing
 - Contributions, issues, and feature requests are welcome! 
 
