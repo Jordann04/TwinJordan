@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 import requests
 import re
-# Initialize bot
+
 load_dotenv()
 vulners_api_key = os.getenv("VULNERS_API_KEY")
 
