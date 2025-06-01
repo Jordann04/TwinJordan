@@ -17,10 +17,9 @@ In the fast-paced world of cybersecurity, staying ahead of vulnerabilities is cr
 - Identifies affected services for targeted rule generation  
 - Automatically generates Snort IDS rules based on CVE data  
 - Provides Discord bot integration for on-demand rule generation  
-- CLI support planned for direct terminal use  
+- Now fully cli functional! by running python cli.py CVE-XXXX-YYYY  
 - Modular design with plans for Sigma and Suricata rules integration  
 - Rule severity scoring to prioritize alerts
-
 ---
 
 ## Installation
@@ -47,7 +46,14 @@ Create a .env file in the root directory and add your API keys:
 VULNERS_API_KEY=your_vulners_api_key_here
 DISCORD_TOKEN=your_discord_bot_token_here
 
-## Usage
+## Cli usage
+- make sure you install cve_engine.py and cli.py they are in the repo.
+- Make sure you install dependencies (see [requirements.txt](https://github.com/Jordann04/TwinJordan/blob/main/requirements.txt))
+- then you can run py cli.py CVE-XXXX-YYYY
+- ## Demo cli
+ ![CLI in action](cli_demo.png)
+
+## DIscord Usage
 - Add the Bot to Your Server
   [Click here to invite the bot to your Discord server](https://discord.com/oauth2/authorize?client_id=1367699287906979870&permissions=84992&integration_type=0&scope=bot)
 - Run the Discord bot with:
@@ -55,19 +61,14 @@ DISCORD_TOKEN=your_discord_bot_token_here
 - Use the command in any channel the bot has access to:
 - !snort CVE-2017-0144
 - The bot will respond with the CVE details and a generated Snort rule.
-- ## Demo
+- ## Demo Discord
 
 Here’s how the bot responds when you query one of the most widely Known CVEs ETERNAL BLUE:
 
 ![Discord bot in action](Bot_run.png)
 
-CLI (Coming Soon)
-- A CLI tool will be available soon for direct use in the terminal:
-- python cli.py CVE-2017-0144
-- This will output vulnerability details and generate IDS rules without needing Discord.
 
 ## Roadmap
-- CLI tool for terminal use
 
 - Sigma and Suricata rule generation
 
