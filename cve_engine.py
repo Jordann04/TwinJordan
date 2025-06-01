@@ -1,3 +1,5 @@
+# Copyright (c) 2025 Jordan Davis
+# Licensed under the Apache 2.0 License. See LICENSE file in the project root for full license information.
 
 from dotenv import load_dotenv
 import os
