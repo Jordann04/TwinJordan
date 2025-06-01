@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Jordan Davis
+# Licensed under the Apache 2.0 License. See LICENSE file in the project root for full license information.
+
 import argparse
 from cve_engine import fetch_cve_data, extract_service, attack_vector_from_string, service_map
 
