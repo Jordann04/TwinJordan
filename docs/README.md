@@ -51,7 +51,7 @@ DISCORD_TOKEN=your_discord_bot_token_here
 - Make sure you install dependencies (see [requirements.txt](https://github.com/Jordann04/TwinJordan/blob/main/requirements.txt))
 - then you can run py cli.py CVE-XXXX-YYYY
 - ## Demo cli
- ![CLI in action](cli_demo.png)
+ ![CLI in action](../images/cli_demo.png)
 
 ## DIscord Usage
 - Add the Bot to Your Server
@@ -65,8 +65,7 @@ DISCORD_TOKEN=your_discord_bot_token_here
 
 Here’s how the bot responds when you query one of the most widely Known CVEs ETERNAL BLUE:
 
-![Discord bot in action](Bot_run.png)
-
+![Discord bot in action](../images/Bot_run.png)
 
 ## Roadmap
 
