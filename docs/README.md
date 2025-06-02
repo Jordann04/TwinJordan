@@ -51,7 +51,7 @@ DISCORD_TOKEN=your_discord_bot_token_here
 - Make sure you install dependencies (see [requirements.txt](https://github.com/Jordann04/TwinJordan/blob/main/requirements.txt))
 - then you can run py cli.py CVE-XXXX-YYYY
 - ## Demo cli
- ![CLI in action](../images/cli_demo.png)
+ ![CLI in action](../images/cli2_demo.png)
 
 ## DIscord Usage
 - Add the Bot to Your Server
@@ -79,7 +79,7 @@ Here’s how the bot responds when you query one of the most widely Known CVEs E
 
 - Expanding services and attack vector database
  
-- adding ports and custom user input
+- adding user input with sanitization
 ## Contributing
 - Contributions, issues, and feature requests are welcome! 
 
