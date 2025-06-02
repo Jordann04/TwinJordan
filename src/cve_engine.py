@@ -11,14 +11,15 @@ vulners_api_key = os.getenv("VULNERS_API_KEY")
 
 CVSS_vector_pattern = re.compile( r'(CVSS:\d+\.\d+/)?AV:[NALP]/AC:[LH]/PR:[NLH]/UI:[NR]/S:[UC]/C:[HLN]/I:[HLN]/A:[HLN]')
 
+home_net = "$HOME_NET"
 
 service_map = {
-    "fortios": {"port": "443", "proto": "tcp", "name": "Fortios"},#ok so this can pull multiple things attack vector service related and also port
-    "apache": {"port": "80", "proto": "tcp", "name": "Apache"},   #adding attack vector and another port dict is probably ideal
-    "nginx": {"port": "80", "proto": "tcp", "name": "Nginx"},     #testing future implications
-    "ftp": {"port": "21", "proto": "tcp", "name": "FTP"},         #pull CVSS string as well and the attack method needs to be added
-    "ldap": {"port": "389", "proto": "tcp", "name": "LDAP"},      #adding this to the cli version home_net = input("Enter your HOME_NET (default: any): ") or "any" soon  june 15
-    "ssh": {"port": "22", "proto": "tcp", "name": "SSH"},         #port = input("Enter port (default: any): ") or "any" soon june 15
+    "fortios": {"proto": "tcp", "name": "Fortios"}, #ok so this can pull multiple things service related and also port
+    "apache": {"proto": "tcp", "name": "Apache"},   # going to add proto soon
+    "nginx": {"proto": "tcp", "name": "Nginx"},     #need to add more services without getting false positives
+    "ftp": {"port": "21", "proto": "tcp", "name": "FTP"},        #will add udp and icmp proto keys for dict soon
+    "ldap": {"port": "389", "proto": "tcp", "name": "LDAP"},     
+    "ssh": {"port": "22", "proto": "tcp", "name": "SSH"},         
     "smb": {"port": "445", "proto": "tcp", "name": "SMB"},
     "windows":{"name": "Windows"},
 
@@ -66,7 +67,7 @@ def fetch_cve_data(cve_id):
                      print("[DEBUG] No description found in document.")
                      return f"No description found for {cve_id}"
             else:
-                print(f"[DEBUG] CVE ID {cve_id} not found in documents.")
+                print(f"[DEBUG] CVE ID {cve_id} not found in documents.")      #all print statements here just for debugging they can be deleted and or removed but they will help you troubleshoot when pulling for services
                 return f"No description found for {cve_id}"
 
         else:
@@ -120,24 +121,28 @@ async def snort(ctx, cve_id: str):
         affected_services = extract_service(cve_description, service_map)
         if cvss_vector_json:
             cvss_string = cvss_vector_json
-            print(f"[DEBUG] Using JSON CVSS vector: {cvss_string}")
+            print(f"[DEBUG] Using JSON CVSS vector: {cvss_string}")             #json currently working for everything
         else:
             cvss_string = extract_cvss(cve_description)
-            print(f"[DEBUG] Using regex-extracted CVSS vector: {cvss_string}")
+            print(f"[DEBUG] Using regex-extracted CVSS vector: {cvss_string}")   #troubleshoot for fixing the regex which needs to be fixed to extract better data
 
         attack_vector = attack_vector_from_string(cvss_string)
 
         if affected_services == ["ANY"]:
             service_str = "ANY"
+            dst_port = "ANY"
         else:
-            service_str = ', '.join(item[0] for item in affected_services)
+            service_str = ', '.join(item[0] for item in affected_services) 
+            first_service = affected_services[0][1]
+            dst_port = first_service.get("port")("any")
+            
         if attack_vector == "NETWORK":
             print(f"{service_str} = {service_str}")
-        snort_rule = f'alert tcp any any -> any any (msg:"Potential {cve_id} Exploit - {service_str}"; sid=1000001; rev=1;)'
+        snort_rule = f'alert tcp any any -> {home_net} {dst_port} (msg:"Potential {cve_id} Exploit - {service_str}"; sid=1000001; rev=1;)'
 
         await ctx.send(
             f"Attack Vector: `{attack_vector}` (CVSS: `{cvss_string}`)\n"
-            f"Generated Snort rule:\n```{snort_rule}```\nFor more details, visit: https://vulners.com/cve/{cve_id}" #need to write an else statement so it dosent match to non network attack vectors adding soon
+            f"Generated Snort rule:\n```{snort_rule}```\nFor more details, visit: https://vulners.com/cve/{cve_id}" #need to write an elif statement so it dosent match to non network attack vectors to mitigate false positives
           )
     else:
         await ctx.send(f"No CVE data found for `{cve_id}` or failed to fetch description.")
