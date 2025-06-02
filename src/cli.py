@@ -24,7 +24,7 @@ def main():
         print(f"No data found for {cve_id}")
         return
 
-    services = extract_seervice(description, service_map)
+    services = extract_service(description, service_map)
     attack_vector = attack_vector_from_string(cvss_vector)
 
     if services == "ANY":
