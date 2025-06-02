@@ -130,7 +130,7 @@ async def snort(ctx, cve_id: str):
 
         if affected_services == ["ANY"]:
             service_str = "ANY"
-            dst_port = "ANY"
+            dst_port = "any"
         else:
             service_str = ', '.join(item[0] for item in affected_services) 
             dst_port = "any"
