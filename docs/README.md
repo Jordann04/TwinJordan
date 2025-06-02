@@ -49,7 +49,8 @@ DISCORD_TOKEN=your_discord_bot_token_here
 ## Cli usage
 - make sure you install cve_engine.py and cli.py they are in the repo.
 - Make sure you install dependencies (see [requirements.txt](https://github.com/Jordann04/TwinJordan/blob/main/requirements.txt))
-- then you can run py cli.py CVE-XXXX-YYYY
+- then you can run python cli.py CVE-2021-44228
+- you can do this above format for any cve and it will generate a snort rule as long as its a network attack vector
 - ## Demo cli
  ![CLI in action](../images/cli2_demo.png)
 
