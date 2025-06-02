@@ -133,8 +133,12 @@ async def snort(ctx, cve_id: str):
             dst_port = "ANY"
         else:
             service_str = ', '.join(item[0] for item in affected_services) 
-            first_service = affected_services[0][1]
-            dst_port = first_service.get("port")("any")
+            dst_port = "any"
+            for _, service_info in services:
+                port = service_info.get("port")
+                if port: 
+                    dst_port = port
+                    break
             
         if attack_vector == "NETWORK":
             print(f"{service_str} = {service_str}")
