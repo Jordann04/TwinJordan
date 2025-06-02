@@ -17,7 +17,7 @@ In the fast-paced world of cybersecurity, staying ahead of vulnerabilities is cr
 - Identifies affected services for targeted rule generation  
 - Automatically generates Snort IDS rules based on CVE data  
 - Provides Discord bot integration for on-demand rule generation  
-- Now fully cli functional! by running python cli.py CVE-XXXX-YYYY  
+- Now fully cli functional! by running python cli.py CVE-YYYY-XXXX  
 - Modular design with plans for Sigma and Suricata rules integration  
 - Rule severity scoring to prioritize alerts
 ---
